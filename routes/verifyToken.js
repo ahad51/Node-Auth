@@ -13,6 +13,6 @@ const jwt = require("jsonwebtoken");
     }
     catch(err)
     {
-        res.status(400).send('Invalid Token')
+        res.status(400).send('Invalid Token');
     }
-}
+};

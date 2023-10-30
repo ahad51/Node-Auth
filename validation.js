@@ -21,8 +21,15 @@ const loginValidation = (data) => {
 
     return error;
 }
-
+const resetPassValidation = (data) => {
+    const schema = Joi.object({
+      email: Joi.string().min(6).required().email(),
+    });
+    const { error } = schema.validate(data);
+    return error;
+  };
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.resetPassValidation = resetPassValidation;
 
