@@ -92,11 +92,18 @@ router.post("/reset/:token", async (req, res) => {
 
     // Update the user's password with the new hashed password
     user.password = hashPassword;
-    user.save();
 
-    return res
-      .status(200)
-      .json({ success: true, message: "Password reset successfully" });
+    // Save the updated user object
+    try {
+      await user.save();
+      return res
+        .status(200)
+        .json({ success: true, message: "Password reset successfully" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, error: "Error updating password" });
+    }
   });
 });
 
