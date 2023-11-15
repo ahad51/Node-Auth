@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
 const resetRoute = require('./routes/reset')
+const getData=require('./routes/data')
+const postData=require('./routes/postData')
 
 
 async function connectToDatabase() {
@@ -26,5 +28,8 @@ app.use(express.json());
 app.use('/api/posts', postRoute);
 app.use('/api/user', authRoute);
 app.use('/api/user', resetRoute);
+app.use('/api/user', resetRoute);
+app.use('/api/user', postData);
+app.use('/api/user', getData);
 
 app.listen(3000, () => console.log('Server up and running'));
